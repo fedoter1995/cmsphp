@@ -14,7 +14,7 @@ abstract class AbstractProvider
 
     public function __construct (\Engine\DI\DI $di)
     {
-        $this->di =$di;
+        $this->di = $di;
     }
 
     abstract function init ();
