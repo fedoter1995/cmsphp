@@ -9,6 +9,7 @@ class Router
     public function _construct($host)
     {
         $this->host = $host;
+
     }
 
     public function add($key, $pattern, $controller, $method = 'GET')
@@ -17,7 +18,7 @@ class Router
             
             'pattern'    => $pattern,
             'controller' => $controller,
-            'method'     => $method,
+            'method'     => $method
 
         ];
     }

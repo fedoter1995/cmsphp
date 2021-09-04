@@ -10,12 +10,13 @@ try{
     //Dependency injection
     $di = new DI();
 
-    $services = require __DIR__ . '/Config\Service.php';
+    $services = require __DIR__ . '\Config\Service.php';
     // Init  service
     foreach($services as $service)
     {
         $provider = new $service($di);
         $provider->init();
+        
     }
 
     $cms = new Cms($di);

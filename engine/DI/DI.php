@@ -24,6 +24,15 @@ class DI
 
     /* 
      * @param $key
+     * @return $this
+     */
+    public function get ($key)
+    {
+        return $this->has[$key];
+    }
+
+    /* 
+     * @param $key
      * @return bool
      */
     public function has ($key)
@@ -31,13 +40,6 @@ class DI
        return  isset($this->container[$key]) ? $this->container[$key] : null;
     }
     
-    /* 
-     * @param $key
-     * @return $this
-     */
-    public function get ($key)
-    {
-        return $this->container[$key];
-    }
+   
 
 }

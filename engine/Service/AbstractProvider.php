@@ -4,12 +4,10 @@ namespace Engine\Service;
 
 abstract class AbstractProvider
 {
-
     /*
      * @var \Engine\DI\DI;
      * 
      */
-
     protected $di;
 
     public function __construct (\Engine\DI\DI $di)
@@ -17,5 +15,5 @@ abstract class AbstractProvider
         $this->di = $di;
     }
 
-    abstract function init ();
+    abstract function init();
 }
