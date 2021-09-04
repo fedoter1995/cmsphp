@@ -28,7 +28,7 @@ class DI
      */
     public function has ($key)
     {
-       return  isset($this->container[$key]);
+       return  isset($this->container[$key]) ? $this->container[$key] : null;
     }
     
     /* 
@@ -37,10 +37,7 @@ class DI
      */
     public function get ($key)
     {
-
-        $this->container[$key];
-
-        return $this;
+        return $this->container[$key];
     }
 
 }

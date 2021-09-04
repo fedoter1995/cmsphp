@@ -23,7 +23,7 @@ class Cms
 
     public function run()
     {
-       
+       print_r($this->di);
     }
 
 }
