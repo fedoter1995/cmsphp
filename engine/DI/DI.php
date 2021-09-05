@@ -22,14 +22,7 @@ class DI
         return $this;
     }
 
-    /* 
-     * @param $key
-     * @return $this
-     */
-    public function get ($key)
-    {
-        return $this->has[$key];
-    }
+  
 
     /* 
      * @param $key
@@ -39,7 +32,14 @@ class DI
     {
        return  isset($this->container[$key]) ? $this->container[$key] : null;
     }
-    
+      /* 
+     * @param $key
+     * @return $this
+     */
+    public function get ($key)
+    {
+        return $this->has($key);
+    }
    
 
 }

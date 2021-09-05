@@ -8,11 +8,11 @@ use Engine\Core\Router\Router;
 class Provider extends AbstractProvider
 {
 
-    public $serviseName = 'router';
+    public $serviceName = 'router';
 
     public function init ()
     {
-        $router = new Router('http://cmsphp');
+        $router = new Router();
         
         $this->di->set($this->serviceName, $router);
     }
