@@ -31,9 +31,7 @@ class Cms
     {  
         try
         {
-            $this->router->add('home', '/', 'HomeController:index');
-            $this->router->add('news', '/news', 'HomeController:news');
-            $this->router->add('news_single', '/news/(id:int)', 'HomeController:news');
+            require_once __DIR__ . '/../cms/Routes.php';
 
             $routerDispatch = $this->router->dispatch(Common::getMethods(), Common::getPathUrl());
         
@@ -48,10 +46,12 @@ class Cms
         $controller = '\\Cms\\Controller\\'. $class;
         $parameters = $routerDispatch->getParameters();
 
-        print_r($parameters);
-            call_user_func_array([new $controller($this->di), $action],$parameters);
-            //print_r($class);
-            //print_r($action);
+        //print_r($parameters);
+        
+        call_user_func_array([new $controller($this->di), $action],$parameters);
+
+        //print_r($class);
+        //print_r($action);
         // print_r ($routerDispatch);
         }catch(\Exeption $e){
 
