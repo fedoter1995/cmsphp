@@ -31,7 +31,7 @@ class Cms
     {  
         try
         {
-            require_once __DIR__ . '/../cms/Routes.php';
+            require_once __DIR__ . '/../'. mb_strtolower(ENV) .'/Routes.php';
 
             $routerDispatch = $this->router->dispatch(Common::getMethods(), Common::getPathUrl());
         
@@ -43,7 +43,7 @@ class Cms
 
         list($class, $action) = explode(':',$routerDispatch->getController(), 2);
         
-        $controller = '\\Cms\\Controller\\'. $class;
+        $controller = '\\'. ENV .'\\Controller\\'. $class;
         $parameters = $routerDispatch->getParameters();
 
         //print_r($parameters);
@@ -53,7 +53,7 @@ class Cms
         //print_r($class);
         //print_r($action);
         // print_r ($routerDispatch);
-        }catch(\Exeption $e){
+        }catch(\Exception $e){
 
             echo $e->getMessage();
             exit;
