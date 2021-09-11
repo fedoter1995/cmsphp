@@ -2,7 +2,7 @@
 
 return [
     'host' => 'localhost',
-    'db_name' => 'my_site_bd',
+    'db_name' => 'cms',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8'

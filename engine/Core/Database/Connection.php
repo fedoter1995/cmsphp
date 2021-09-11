@@ -3,6 +3,7 @@
 namespace Engine\Core\Database;
 
 use \PDO;
+use Engine\Core\Config\Config;
 
 Class Connection
 {
@@ -15,7 +16,7 @@ Class Connection
 
     private function connect()
     {
-        $config = require_once 'config.php';
+        $config = Config::file('database'); 
         $dsn = 'mysql:host='.$config['host'].';dbname='.$config['db_name'].';charset='.$config['charset'];
         $this->link = new PDO($dsn, $config['username'], $config['password']);
 
