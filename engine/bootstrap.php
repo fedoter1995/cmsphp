@@ -6,6 +6,7 @@ use Engine\Cms;
 use Engine\DI\DI;
 
 
+
 try{
     //Dependency injection
     $di = new DI();
@@ -22,7 +23,7 @@ try{
     $cms = new Cms($di);
     $cms->run();
 
-}catch(\ErrorExeption $e)
+}catch(\ErrorException $e)
 {
     echo $e->getMessage();
 }

@@ -22,8 +22,8 @@ class Auth implements AuthInterface
 
     public function authorize($user)
     {
-        Cookie::set('auth.authorized', true);
-        Cookie::set('auth.user', $user);
+        Cookie::set('authauthorized', true);
+        Cookie::set('authuser', $user);
 
         $this->authorized = true;
         $this->user       = $user;
@@ -32,8 +32,8 @@ class Auth implements AuthInterface
 
     public function unAuthorize($user)
     {
-        Cookie::delete('auth.authorized');
-        Cookie::delete('auth.user');
+        Cookie::delete('authauthorized');
+        Cookie::delete('authuser');
 
         $this->authorized = false;
         $this->user       = null;
@@ -45,7 +45,7 @@ class Auth implements AuthInterface
         return (string) rand(10000000, 99999999);
     }
 
-    public static function ecryptPassword($password, $salt = '')
+    public static function encryptPassword($password, $salt = '')
     {
         return hash('sha256', $password . $salt);
     }
