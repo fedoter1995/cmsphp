@@ -47,7 +47,7 @@ Class Connection
         
        $exe = $this->execute($sql);
     
-        print_r($exe);
+        
 
         $result = $exe->fetchAll(PDO::FETCH_ASSOC);
 

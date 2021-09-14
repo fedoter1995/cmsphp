@@ -15,7 +15,7 @@ class Cookie
     //Get cookie by key
     public static function get($key)
     {
-        isset($_COOKIE[$key])?$_COOKIE[$key]:null;    
+        return isset($_COOKIE[$key])?$_COOKIE[$key]:null;    
     }
 
     public static function delete($key)

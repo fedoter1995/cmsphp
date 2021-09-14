@@ -16,7 +16,19 @@ class LoginController extends Controller
         parent::__construct($di);
 
         $this->auth = new Auth();
-               
+
+        if($this->auth->hashUser() !== null) {
+
+            header ('Location: /admin/', true, 301);
+            exit;
+        }
+/*
+        if($this->auth->authorized()) {
+            //redirect
+            header ('Location: /admin/');
+            exit;
+        }
+*/               
     }
 
 
@@ -39,9 +51,29 @@ class LoginController extends Controller
             AND   password="' . md5($params['password']) . '"
             LIMIT 1
             ');
-        print_r($query);exit;
-        $this->auth->authorize('fedor');
-        
 
+
+            if(!empty($query)) {
+                $user = $query[0];
+
+                if($user['role'] == 'admin') {
+                    $hash = md5($user['id'] . $user['email'] . $user['password'] . $this->auth->salt());
+
+                    $this->db->execute('
+                    UPDATE user
+                    SET hash= "' . $hash .'"
+                    WHERE id= "' . $user['id'] .'"
+                    ');
+
+                    $this->auth->authorize($hash);
+                    
+                    header ('Location: /admin/login/', true, 301);
+                    
+                    exit;
+                }
+            }
+
+
+           
     }
 }

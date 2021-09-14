@@ -7,7 +7,8 @@ use Engine\Core\Auth\Auth;
 
 class AdminController extends Controller
 {
-    protected $auth; 
+    protected $auth;
+
 
 
     public function __construct($di)
@@ -16,18 +17,28 @@ class AdminController extends Controller
 
         $this->auth = new Auth();
 
-        $this->checkAuthorization();
+        $this->checkAuthorization(); 
+        
+        if($this->auth->hashUser() == null)
+        {
+            header ('Location: /admin/login/' );
+        }
                
     }
 
     public function checkAuthorization()
     {
-        if(!$this->auth->authorized())
-        {
-            //redirect
-            header ('Location: /admin/login', true, 301 );
-            
-        }
+
+    
+    }
+
+    public function logout()
+    {
+        $this->auth->unAuthorize();
+
+        //redirect
+        header ('Location: /admin/login/' );
+        exit;
     }
 
 }
