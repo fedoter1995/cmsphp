@@ -15,7 +15,7 @@ class UserRepository extends Model
         ->from('user')
         ->orderBy('id', 'DESC')
         ->sql();
-        print_r($sql);
+
         return $this->db->query($sql);
     }
 }

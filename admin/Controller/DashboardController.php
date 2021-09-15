@@ -9,9 +9,9 @@ class DashboardController extends AdminController
 
     public function index()
     {
-        $userModel = new UserRepository($this->di);
+        $userModel = $this->load->model('user');
 
-        print_r($userModel->getUsers());
+        print_r($userModel->repository->getUsers());
 
         $this->view->render('dashboard');
     }

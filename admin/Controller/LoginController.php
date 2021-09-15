@@ -71,8 +71,10 @@ class LoginController extends Controller
                         ->where('id', $user['id'])
                         ->sql();
                         
-                    $this->db->execute($sql, $queryBuilder->values);
+                    $this->db->execute($sql, $queryBuilder->values);                    
+                                        
                     
+
                     $this->auth->authorize($hash);
                     
                     header ('Location: /admin/login/', true, 301);
