@@ -6,6 +6,7 @@ use \PDO;
 use \PDOException;
 use Engine\Core\Config\Config;
 
+
 Class Connection
 {
     private $pdo;
@@ -33,23 +34,21 @@ Class Connection
         return $this;
     }
 
-    public function execute($sql)
+    public function execute($sql, $values = [])
     {
         $sth = $this->pdo->prepare($sql);
-        $sth->execute();
-
-        return $sth;
+        return $sth->execute($values);
     }
 
-    public function query($sql)
+    public function query($sql, $values = [])
     {
-
+        $sth = $this->pdo->prepare($sql);
         
-       $exe = $this->execute($sql);
+        $sth->execute($values);
     
         
-
-        $result = $exe->fetchAll(PDO::FETCH_ASSOC);
+        
+        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 
         if ($result === false){
             return [];
