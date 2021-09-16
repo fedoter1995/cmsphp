@@ -131,16 +131,20 @@ class Theme
 /**
  * [loadTemplateFile description]
  *
- * @param   [type]  $nameFile  [$nameFile description]
- * @param   [type]  $data      [$data description]
+ * param   [type]  $nameFile  [$nameFile description]
+ * param   [type]  $data      [$data description]
  *
- * @return  []                 [return description]
+ * return  []                 [return description]
  */
 
     private function loadTemplateFile($nameFile, $data = [])
-    {
-        
+    {   
         $templateFile = ROOT_DIR . '/content/themes/default/' . $nameFile . '.php';
+
+        if(ENV == 'Admin'){
+            $templateFile = ROOT_DIR . '/View/' . $nameFile . '.php';
+        }
+        
 
         if(is_file($templateFile))
         {

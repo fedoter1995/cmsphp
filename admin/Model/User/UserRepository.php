@@ -18,4 +18,15 @@ class UserRepository extends Model
 
         return $this->db->query($sql);
     }
+
+    public function test()
+    {
+        $user = new User(3);
+        
+        $user->setRole('admin');
+        
+        
+        $user->save();
+
+    }
 }

@@ -3,11 +3,16 @@
 
 namespace Admin\Model\User;
 
+
+use Engine\Core\Database\ActiveRecord;
+
 class User
 {
+    use ActiveRecord;
+
+
     /**
-     *
-     * @var [str]
+     * var [str]
      */
     protected $table = 'user';
 
@@ -135,6 +140,24 @@ class User
     public function setDateReg($date_reg): self
     {
         $this->date_reg = $date_reg;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of hash
+     */
+    public function getHash()
+    {
+        return $this->hash;
+    }
+
+    /**
+     * Set the value of hash
+     */
+    public function setHash($hash): self
+    {
+        $this->hash = $hash;
 
         return $this;
     }
