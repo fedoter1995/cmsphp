@@ -8,14 +8,14 @@ class HomeController extends CmsController
 
     public function index()
     {   
-        $data = ['name' => 'Fedor'];
-        $this->view->render('index', $data);
+        
+        $this->view->render('index');
 
     }
 
-    public function news($id = '')
+   /* public function news($id = '')
     {
         echo 'News Page' . $id;
-    }
+    }*/
 
 }
