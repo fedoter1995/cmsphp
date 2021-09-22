@@ -8,3 +8,5 @@ $this->router->add('logout', '/admin/logout/', 'AdminController:logout');
 
 $this->router->add('pages', '/admin/pages/', 'PageController:listing');
 $this->router->add('pages-create', '/admin/pages/create/', 'PageController:create');
+
+$this->router->add('page-add', '/admin/page/add/', 'PageController:add', 'POST');
