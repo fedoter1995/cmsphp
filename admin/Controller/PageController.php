@@ -11,6 +11,7 @@ class PageController extends AdminController
        $pageModel = $this->load->model('Page');
 
         $data['pages'] = $pageModel->repository->getPages();
+        
 
         $this->view->render('pages/list', $data);
 
