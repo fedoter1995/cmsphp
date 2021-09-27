@@ -32,7 +32,7 @@ class Page
      * [$password Page content]
      *
      */
-    public $conent;
+    public $content;
     /**
      * [$date_reg description]
      *
@@ -80,7 +80,7 @@ class Page
     /**
      * Get the value of conent
      */
-    public function getConent()
+    public function getContent()
     {
         return $this->conent;
     }

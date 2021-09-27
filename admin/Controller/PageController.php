@@ -12,7 +12,7 @@ class PageController extends AdminController
 
         $data['pages'] = $pageModel->repository->getPages();
 
-        $this->view->render('pages/list');
+        $this->view->render('pages/list', $data);
 
         print_r($_POST);
         
@@ -30,7 +30,14 @@ class PageController extends AdminController
     public function add()
     {
         $params = $this->request->post;
+        $pageModel = $this->load->model('page');
 
-        print_r($params);
+        if(isset($params['title'])) {
+           $pageID = $pageModel->repository->createPage($params); 
+           echo $pageID;
+        }
+        
+
+        //print_r($params);
     }
 }

@@ -7,6 +7,7 @@ var page = {
         var formData = new FormData();
 
         formData.append('title', $('#formTitle').val());
+        formData.append('content', $('#formContent').val());
         //formData.append('content', $('#formContent').val());
 
 
@@ -24,9 +25,9 @@ var page = {
 
             },
 
-            success: function(){
+            success: function(result){
 
-                
+                console.log(result);
             }
 
         });

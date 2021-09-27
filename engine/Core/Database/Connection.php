@@ -56,4 +56,10 @@ Class Connection
 
         return $result;
     }
+
+    public function lastInsertId()
+    {
+        $last_id = $this->pdo->lastInsertId();
+        return $last_id;
+    }
 } 
