@@ -11,7 +11,7 @@
 </style>
     <main>
         <div class="container title ">
-            <h3>Add Page</h3>
+            <h3>Create Page</h3>
             <div class="row justify-content-center align-items-center h-100">
                 <form method="POST">
                     <div class="form-group row">

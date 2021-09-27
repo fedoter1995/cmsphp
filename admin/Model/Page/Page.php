@@ -88,9 +88,9 @@ class Page
     /**
      * Set the value of conent
      */
-    public function setConent($conent): self
+    public function setContent($content): self
     {
-        $this->conent = $conent;
+        $this->content = $content;
 
         return $this;
     }
