@@ -53,7 +53,7 @@ Class Connection
         if ($result === false){
             return [];
         }
-
+        //var_export($result);
         return $result;
     }
 

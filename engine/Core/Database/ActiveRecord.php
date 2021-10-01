@@ -8,18 +8,18 @@ use \ReflectionProperty;
 trait ActiveRecord
 {
     /**
-     * Connection
+     * @var Connection
      */
     protected $db;
 
     /**
-     * QueryBuilder
+     * @var QueryBuilder
      */
     protected $queryBuilder;
 
     /**
      * ActiveRecord constructor.
-     *  $id
+     * @param int $id
      */
     public function __construct($id = 0)
     {
@@ -34,24 +34,27 @@ trait ActiveRecord
     }
 
     /**
-     * return string
+     * @return string
      */
     public function getTable()
     {
         return $this->table;
     }
 
-
+    /**
+     * @return object|null
+     */
     public function findOne()
     {
         $find = $this->db->query(
             $this->queryBuilder
-            ->select()
-            ->from($this->getTable())
-            ->where('id', $this->id)
-            ->sql(),
-            $this->queryBuilder->values      
+                ->select()
+                ->from($this->getTable())
+                ->where('id', $this->id)
+                ->sql(),
+            $this->queryBuilder->values
         );
+
         return isset($find[0]) ? $find[0] : null;
     }
 
@@ -80,7 +83,6 @@ trait ActiveRecord
             }
 
             return $this->db->lastInsertId();
-
         } catch (\Exception $e) {
             echo $e->getMessage();
         }

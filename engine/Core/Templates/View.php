@@ -12,12 +12,12 @@ class View
 
     public function __construct()
     {
-        $this->theme = new Theme();
+        $this->theme   = new Theme();
     }
 
 
 
-    public function render($template, $vars = [])
+    public function render($template, $data = [])
     {
         $templatePath = $this->getTemplatePath($template, ENV);
 
@@ -25,9 +25,9 @@ class View
         {
             throw new \InvalidArgumentException(sprintf('Templates "%s" not found in "%s"',$template, $templatePath));
         }
-
-        $this->theme->setData($vars);
-        extract($vars);
+        
+        $this->theme->setData($data);
+        extract($data);
         
         ob_start();
         ob_implicit_flush(0);

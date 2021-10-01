@@ -1,6 +1,8 @@
 <?php
 
 return [
-
-    'base_url' => '',
+    'baseUrl'         => 'http://cmsphp',
+    'defaultLang'     => 'english',
+    'defaultTimezone' => 'America/Chicago',
+    'defaultTheme'    => 'default'
 ];

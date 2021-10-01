@@ -31,12 +31,12 @@ a{
       <th scope="row">
         <?= $page['id']?>
       </th>
-      <td >
+      <th class="float-left">
         <a href="/admin/pages/edit/<?=$page['id']?>">
           <?= $page['title']?>
         </a>
         
-      </td>
+      </th>
       <td><?= $page['date']?></td>
     </tr>
     <?php endforeach ?>

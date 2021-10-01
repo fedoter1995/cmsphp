@@ -9,11 +9,16 @@ abstract class AbstractProvider
      * 
      */
     protected $di;
-
+    /**
+     * AbstractProvider constructor.
+     * param \Engine\DI\DI $di
+     */
     public function __construct (\Engine\DI\DI $di)
     {
         $this->di = $di;
     }
-
+    /**
+     * return  [mixed]  [return description]
+     */
     abstract function init();
 }

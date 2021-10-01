@@ -11,7 +11,7 @@ try{
     //Dependency injection
     $di = new DI();
 
-    require __DIR__ . '\Config\Service.php';
+    require __DIR__ . '/Config/Service.php';
     // Init  service
     foreach($services as $service)
     {
