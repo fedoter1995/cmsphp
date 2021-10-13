@@ -46,6 +46,7 @@ class Cms
         list($class, $action) = explode(':',$routerDispatch->getController(), 2);
         
         $controller = '\\'. ENV .'\\Controller\\'. $class;
+        //var_export($controller);
         $parameters = $routerDispatch->getParameters();
 
         //print_r($parameters);
