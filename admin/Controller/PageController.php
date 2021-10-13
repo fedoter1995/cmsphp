@@ -42,6 +42,7 @@ class PageController extends AdminController
             $pageId = $this->model->page->createPage($params);
             echo $pageId;
         }
+        return $pageId;
     }
 
     public function update()

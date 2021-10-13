@@ -27,7 +27,8 @@ var page = {
 
             success: function(result){
 
-                console.log(result);
+                console.log($.trim(result));
+                location = '/admin/pages/edit/'+$.trim(result);
             }
 
         });
