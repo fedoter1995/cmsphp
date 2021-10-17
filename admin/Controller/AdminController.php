@@ -24,8 +24,13 @@ class AdminController extends Controller
         {
             header ('Location: /admin/login/' );
         }
-               
+        
+        // Load global language
+        $this->load->language('dashboard/menu');
+        
     }
+
+    
 
     public function checkAuthorization()
     {

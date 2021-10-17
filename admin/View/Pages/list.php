@@ -1,48 +1,43 @@
 <?php $this->theme->header(); ?>
-<style>
-h3{
 
-   text-align: center;
-
-
-}
-a{
-  float: right;
-}
-
-</style><h3>Pages</h3><a class="btn btn-primary" href="/admin/pages/create/">Create Page</a>
     <main>
-      
-
-        <div class="container title">
-            
+        <div class="container">
+            <div class="row">
+                <div class="col page-title">
+                    <h3>
+                        Pages
+                        <a href="/admin/pages/create/">Create page</a>
+                    </h3>
+                </div>
+            </div>
 
             <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach($pages as $page) : ?>
-    <tr>
-      <th scope="row">
-        <?= $page['id']?>
-      </th>
-      <th class="float-left">
-        <a href="/admin/pages/edit/<?=$page['id']?>">
-          <?= $page['title']?>
-        </a>
-        
-      </th>
-      <td><?= $page['date']?></td>
-    </tr>
-    <?php endforeach ?>
-  </tbody>
-</table>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach($pages as $page): ?>
+                <tr>
+                    <th scope="row">
+                        <?= $page->id ?>
+                    </th>
+                    <td>
+                        <a href="/admin/pages/edit/<?= $page->id ?>">
+                            <?= $page->title ?>
+                        </a>
+                    </td>
+                    <td>
+                        <?= $page->date_reg ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </main>
 
-    <?php $this->theme->footer(); ?>
+<?php $this->theme->footer(); ?>

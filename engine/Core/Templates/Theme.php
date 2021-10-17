@@ -26,15 +26,8 @@ class Theme
 
     protected $data = [];
 
+    public $language = [];
 
-
-	public function getData() { 
-        return $this->data; 
-   } 
-
-   public function setData($data) {  
-       $this->data = $data; 
-   } 
 
 /*
  * [header description]
@@ -47,15 +40,14 @@ class Theme
     public function header($name = null)
     {
         $name = (string) $name;
-        $emptyName = 'header';
+        $file = 'header';
 
-        if($name != '')
+        if($name !== '')
         {
-            $emptyName = sprintf(self::RULES_NAME_FILE['header'], $name);
+            $file = sprintf(self::RULES_NAME_FILE['header'], $name);
         }
 
-        $this->loadTemplateFile($emptyName);
-
+        $this->loadTemplateFile($file);
     }
     
     
@@ -68,19 +60,18 @@ class Theme
  */
 
 
-    public function footer($name = null)
+public function footer($name = '')
+{
+    $name = (string) $name;
+    $file = 'footer';
+
+    if($name !== '')
     {
-        $name = (string) $name;
-        $emptyName = 'footer';
-
-        if($name != '')
-        {
-            $emptyName = sprintf(self::RULES_NAME_FILE['footer'], $name);
-        }
-
-        $this->loadTemplateFile($emptyName);
-        
+        $file = sprintf(self::RULES_NAME_FILE['footer'], $name);
     }
+
+    $this->loadTemplateFile($file);
+}
 /**
  * [sidebar description]
  *
@@ -89,19 +80,19 @@ class Theme
  * @return  [type]         [return description]
  */
 
-    public function sidebar($name = '')
+public function sidebar($name = '')
+{
+    $name = (string) $name;
+    $file = 'sidebar';
+
+    if($name !== '')
     {
-        $name = (string) $name;
-        $emptyName = 'sidebar';
-
-        if($name != '')
-        {
-            $emptyName = sprintf(self::RULES_NAME_FILE['sidebar'], $name);
-        }
-
-        $this->loadTemplateFile($emptyName);
-        
+        $file = sprintf(self::RULES_NAME_FILE['sidebar'], $name);
     }
+
+    $this->loadTemplateFile($file);
+}
+
 
 
 /**
@@ -148,7 +139,7 @@ class Theme
 
         if(is_file($templateFile))
         {
-            extract($data);
+            extract(array_merge($data, $this->data));
             require_once $templateFile;
         }
         else
@@ -158,5 +149,13 @@ class Theme
         }
 
     }
+
+    public function getData() { 
+        return $this->data; 
+   } 
+
+   public function setData($data) {  
+       $this->data = $data; 
+   } 
      
 }

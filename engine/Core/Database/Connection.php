@@ -40,7 +40,7 @@ Class Connection
         return $sth->execute($values);
     }
 
-    public function query($sql, $values = [])
+    public function query($sql, $values = [], $statement = PDO::FETCH_OBJ)
     {
         $sth = $this->pdo->prepare($sql);
         
@@ -48,7 +48,7 @@ Class Connection
     
         
         
-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+        $result = $sth->fetchAll($statement);
 
         if ($result === false){
             return [];

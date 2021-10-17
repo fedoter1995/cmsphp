@@ -2,7 +2,6 @@
 
 namespace Admin\Controller;
 
-
 class PageController extends AdminController
 {
     public function listing()
@@ -23,6 +22,7 @@ class PageController extends AdminController
         $this->view->render('pages/create');
         
     }
+    
     public function edit($id)
     {
         $this->load->model('Page');

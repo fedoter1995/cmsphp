@@ -2,16 +2,18 @@
 
 namespace Engine\Core\Templates;
 
-use Engine\Core\Templates\Theme;
+
+use Engine\DI\DI;
 
 class View
 {
 
-
+    public $di;
     protected $theme;
 
-    public function __construct()
+    public function __construct(DI $di)
     {
+        $this->di = $di;
         $this->theme   = new Theme();
     }
 
@@ -26,8 +28,14 @@ class View
             throw new \InvalidArgumentException(sprintf('Templates "%s" not found in "%s"',$template, $templatePath));
         }
         
+        // Add language in this template
+        $data['lang'] = $this->di->get('language');
+       
         $this->theme->setData($data);
+        
+
         extract($data);
+
         
         ob_start();
         ob_implicit_flush(0);

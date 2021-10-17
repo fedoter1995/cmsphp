@@ -4,7 +4,7 @@ namespace Engine\Core\Router;
 
 class UrlDispatcher
 {
-    private $method = [
+    private $methods = [
 
         'GET',
         'POST'
@@ -19,14 +19,12 @@ class UrlDispatcher
     ];
 
     private $patterns = [
-
         'int' => '[0-9]+',
-        'str' => '[a-zA-Z\.\-_%]\+',
-        'any' => '[a-zA-Z0-9\.\-_%]\+'
-
+        'str' => '[a-zA-Z\.\-_%]+',
+        'any' => '[a-zA-Z0-9\.\-_%]+'
     ];
 
-    public function addPattern($key)
+    public function addPattern($key, $pattern)
     {
         $this->patterns[$key] = $pattern;
     }
@@ -38,12 +36,8 @@ class UrlDispatcher
 
     public function register($method, $pattern, $controller)
     {
-        //print_r ($pattern);
         $convert = $this->convertPattern($pattern);
         $this->routes[strtoupper($method)][$convert] = $controller;
-        
-
-
     }
 
     private function convertPattern($pattern)
@@ -53,26 +47,25 @@ class UrlDispatcher
             return $pattern;
         }
 
-        return preg_replace_callback('#\((\w+):(\w+)\)#',[$this, 'replacePattern'],$pattern);
-
+        return preg_replace_callback('#\((\w+):(\w+)\)#', [$this, 'replacePattern'], $pattern);
     }
 
     private function replacePattern($matches)
     {
-
-        return '(?<' . $matches[1] . '>' . strtr($matches[2], $this->patterns) . ')';
+        return '(?<' .$matches[1]. '>'. strtr($matches[2], $this->patterns) .')';
     }
 
     private function processParam($parameters)
     {
         foreach($parameters as $key => $value)
-        {   
+        {
             if(is_int($key))
             {
                 unset($parameters[$key]);
             }
         }
-       return $parameters;
+
+        return $parameters;
     }
 
 
@@ -85,34 +78,20 @@ class UrlDispatcher
         {
             return new DispatchedRoute($routes[$uri]);
         }
-        return $this->doDispatch($method, $uri);
 
+        return $this->doDispatch($method, $uri);
     }
 
     public function doDispatch($method, $uri)
     {
-        foreach($this->routes($method) as $route => $controller);
+        foreach($this->routes($method) as $route => $controller)
         {
             $pattern = '#^' . $route . '$#s';
         
-                if(preg_match($pattern, $uri, $parameters))
-                {
-                    return new DispatchedRoute($controller, $this->processParam($parameters));
-                } 
-                    
-            
-            
+            if(preg_match($pattern, $uri, $parameters))
+            {
+                return new DispatchedRoute($controller, $this->processParam($parameters));
+            }     
         }
-
     }
-
-  
-
-
-
-
-
-
-    
-
 }
