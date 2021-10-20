@@ -26,7 +26,7 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="/admin/">Admin CMS</a>
+                <a class="navbar-brand" href="/admin/"><?= $lang->dashboardMenu['logo']?></a>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
@@ -44,7 +44,7 @@
                                 <i class="icon-pencil icons"></i> <?= $lang->dashboardMenu['posts'] ?>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
                             <a class="nav-link">
                                 <i class="icon-equalizer icons"></i> <?= $lang->dashboardMenu['settings'] ?>
                             </a>

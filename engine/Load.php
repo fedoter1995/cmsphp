@@ -61,7 +61,7 @@ class Load
     {
         $file = sprintf(
             self::FILE_MASK_LANGUAGE,
-            'english', $path
+            'russian', $path
         );
 
         $content = parse_ini_file($file, true);
